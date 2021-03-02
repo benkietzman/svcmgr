@@ -8,7 +8,7 @@
 # email      : ben@kietzman.org
 ###########################################
 
-MAKEFLAGS="-j ${C}"
+#MAKEFLAGS="-j ${C}"
 prefix=/usr/local
 UNIX_SOCKET_DEFINE:=$(shell cat UNIX_SOCKET)
 
