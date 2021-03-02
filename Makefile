@@ -26,16 +26,22 @@ bin/svcmgrd: ../common/libcommon.a obj/svcmgrd.o bin
 bin:
 	if [ ! -d bin ]; then mkdir bin; fi;
 
-../common/libcommon.a:
-	cd ../common; ./configure; make;
+../common/libcommon.a: ../common/Makefile
+	cd ../common; make;
 
-obj/keepalive.o: keepalive.cpp obj
+../common/Makefile: ../common/configure
+	cd ../common; ./configure;
+
+../common/configure:
+	cd ../; git clone https://github.com/benkietzman/common.git
+
+obj/keepalive.o: keepalive.cpp obj ../common/Makefile
 	g++ -g -std=c++14 -Wall -c keepalive.cpp -o $@ $(CPPFLAGS)
 
-obj/svcmgr.o: svcmgr.cpp obj
+obj/svcmgr.o: svcmgr.cpp obj ../common/Makefile
 	g++ -g -std=c++14 -Wall -c svcmgr.cpp -o $@ $(UNIX_SOCKET_DEFINE) $(CPPFLAGS) -I../common
 
-obj/svcmgrd.o: svcmgrd.cpp obj
+obj/svcmgrd.o: svcmgrd.cpp obj ../common/Makefile
 	g++ -g -std=c++14 -Wall -c svcmgrd.cpp -o $@ $(UNIX_SOCKET_DEFINE) $(CPPFLAGS) -I../common
 
 obj:
