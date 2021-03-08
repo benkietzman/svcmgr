@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
         memset(&addr, 0, sizeof(sockaddr_un));
         addr.sun_family = AF_UNIX;
         strncpy(addr.sun_path, UNIX_SOCKET, (sizeof(addr.sun_path) - 1));
-        if (connect(fdUnix, (sockaddr *)&addr, sizeof(sockaddr)) == 0)
+        if (connect(fdUnix, (sockaddr *)&addr, sizeof(sockaddr_un)) == 0)
         {
           bool bExit = false;
           char szBuffer[4096];
