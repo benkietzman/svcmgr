@@ -36,13 +36,13 @@ bin:
 	cd ../; git clone https://github.com/benkietzman/common.git
 
 obj/keepalive.o: keepalive.cpp obj ../common/Makefile
-	g++ -g -std=c++14 -Wall -c keepalive.cpp -o $@ $(CPPFLAGS)
+	g++ -g -Wall -c keepalive.cpp -o $@ $(CPPFLAGS)
 
 obj/svcmgr.o: svcmgr.cpp obj ../common/Makefile
-	g++ -g -std=c++14 -Wall -c svcmgr.cpp -o $@ $(UNIX_SOCKET_DEFINE) $(CPPFLAGS) -I../common
+	g++ -g -Wall -c svcmgr.cpp -o $@ $(UNIX_SOCKET_DEFINE) $(CPPFLAGS) -I../common
 
 obj/svcmgrd.o: svcmgrd.cpp obj ../common/Makefile
-	g++ -g -std=c++14 -Wall -c svcmgrd.cpp -o $@ $(UNIX_SOCKET_DEFINE) $(CPPFLAGS) -I../common
+	g++ -g -Wall -c svcmgrd.cpp -o $@ $(UNIX_SOCKET_DEFINE) $(CPPFLAGS) -I../common
 
 obj:
 	if [ ! -d obj ]; then mkdir obj; fi;
