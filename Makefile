@@ -18,10 +18,10 @@ bin/keepalive: ../common/libcommon.a obj/keepalive.o bin
 	g++ -o $@ obj/keepalive.o $(LDFLAGS)
 
 bin/svcmgr: ../common/libcommon.a obj/svcmgr.o bin
-	g++ -o $@ obj/svcmgr.o $(LDFLAGS) -L../common -lcommon -lb64 -lcrypto -lexpat -lmjson -lpthread -lssl -ltar -lz
+	g++ -o $@ obj/svcmgr.o $(LDFLAGS) -L../common -lcommon -lb64 -lcrypto -lexpat -lmjson -lpthread -lssl -lz
 
 bin/svcmgrd: ../common/libcommon.a obj/svcmgrd.o bin
-	g++ -o $@ obj/svcmgrd.o $(LDFLAGS) -L../common -lcommon -lb64 -lcrypto -lexpat -lmjson -lpthread -lssl -ltar -lz
+	g++ -o $@ obj/svcmgrd.o $(LDFLAGS) -L../common -lcommon -lb64 -lcrypto -lexpat -lmjson -lpthread -lssl -lz
 
 bin:
 	if [ ! -d bin ]; then mkdir bin; fi;
